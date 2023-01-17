@@ -1,3 +1,3 @@
-## Homelanding page for a tour company
-## BUILT WITH CSS3, SASS, HTML5
+# Homelanding page for a tour company
+### BUILT WITH CSS3, SASS, HTML5
   
