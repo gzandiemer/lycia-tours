@@ -1,0 +1,93 @@
+body {
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  font-size: $default-font-size;
+  line-height: 1.7;
+  color: $color-grey-dark-2;
+  padding: 3rem;
+}
+
+/* 
+TEXT-BOX:
+- when you give an absolute position 50% from left 
+then the left side of the boy starts in the second half of the container
+but since we want here the box to be in the center we add transform like below
+this way half of the width will shift to the left and half of the height to the upper part 
+- the animation is a little shaky sometimes, hiding the backface visibility fixes it
+*/
+
+.heading-primary {
+  color: $color-white;
+  text-transform: uppercase;
+
+  backface-visibility: hidden;
+  margin-bottom: 6rem;
+
+  /* use block level elements to make them on top of each other and to control text break 
+   span element is by default inline element like text thats why we need to transform it to block
+*/
+  &--main {
+    display: block;
+    /* font-size: 60px; */
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+  other things one could do with animation:
+  animation-delay: 3s;
+  animation-iteration-count: 3;
+  how fast or how slow over time:
+  animation-timing-count: ease-in;
+
+  for detailed info check out: https://developer.mozilla.org/en-US/docs/Web/CSS/animation 
+*/
+  }
+  &--sub {
+    display: block;
+    /* font-size: 20px; */
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.75rem;
+    /* all properties in one line */
+    animation: moveInRight 1s ease-out;
+  }
+}
+
+.heading-secondary {
+  font-size: 3.5rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  display: inline-block; //this narrows the weight of the background image below from full-width to text-width
+  background-image: linear-gradient(
+    to right,
+    $color-primary-light,
+    $color-primary-dark
+  );
+  -webkit-background-clip: text; //to make the text take the background color together with color transparent
+  background-clip: text;
+  color: transparent;
+  letter-spacing: 2px; //2px is so small that it doesn't matter it scales or not, that's why using px here is ok
+  transition: all 0.2s;
+  &:hover {
+    transform: skewY(2deg) skewX(15deg) scale(1.1);
+    text-shadow: 0.5rem 1rem 2rem rgba($color-black, 0.2);
+  }
+}
+
+.heading-tertiary {
+  font-size: $default-font-size;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  font-size: $default-font-size;
+
+  &:not(:last-child) {
+    margin-bottom: 30px;
+  }
+}

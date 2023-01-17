@@ -1,0 +1,14 @@
+{
+  "name": "lycia-tours",
+  "version": "1.0.0",
+  "description": "\"Landing page for Lycia Tours\"",
+  "main": "index.js",
+  "scripts": {
+    "compile:sass": "node-sass sass/main.scss css/style.css -w"
+  },
+  "author": "g-zan",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^8.0.0"
+  }
+}

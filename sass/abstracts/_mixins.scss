@@ -1,0 +1,9 @@
+//fix the problem that height of the row turns to 0 when all the elements float
+//with this clearfix the row will have the full height again
+@mixin clearfix {
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}

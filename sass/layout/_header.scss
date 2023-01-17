@@ -1,0 +1,53 @@
+/*  
+   - 95vh means almost 100%, remaining 5vh leaves a blank part at the bottom for the footer 
+   - shortcut tip: just write backimg or backsi and enter
+   - cover: always fit the size of img to the width of the browser
+   - position: if top, then the top of img stays same and other parts crop out as the screen size changes
+   - gradient comes before the img src, cause it needs to be on the top  and we give opacity to make the img also seen 
+   - if you bring the pointer to the color code, you can change the code type and add opacity manually
+   - clip-path is to cut a certain part of an img. here we give the coordinates of the remaining part 
+   starting from the top-left corner clockwise: polygon(x y, x y, x y, x y). 
+   to calculating coordinates one should always compare x and y with the initial x and y on the top left corner
+   if it goes all the way to the opposite direction then the next coordinate is 100%
+   to make a triangle: polygon(0 0, 100% 50%, 0 100%) or polygon(50% 0, 100% 100%, 0 100%)
+   if you give a vh, it will also move dynamically like percent so better than giving a px value
+   to make easily a clip-path with every possible shape use this tool: https://bennettfeely.com/clippy/
+   - the header is parent of logo-box so its position needs to be relative
+*/
+.header {
+  height: 95vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba($color-primary-light, 0.8),
+      rgba($color-primary-dark, 0.8)
+    ),
+    url('../img/artem-bryzgalov-c9XeS3QGhJg-unsplash.jpeg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  -webkit-clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  &__logo-box {
+    position: absolute;
+    /* top: 40px; */
+    top: 0.5rem;
+    /* left: 40px; */
+    left: 4rem;
+  }
+
+  &__logo {
+    /* height: 35px; */
+    height: 30rem;
+    width: 30rem;
+  }
+
+  &__text-box {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* aligning text here will align the btn */
+    text-align: center;
+  }
+}

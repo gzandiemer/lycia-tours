@@ -1,0 +1,111 @@
+/* 
+- pseudo class (pronounciated without p) to style elements under a certain condition 
+the default style is that link is blue and once pushed it turned to purple
+
+- display should be set as inline-block if we wanna give padding or height etc. to the element
+
+*/
+
+.btn {
+  &,
+  &:link,
+  &:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    /* 15 for top&bottom, 40 for left&right*/
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    /* round up the corners */
+    border-radius: 10rem;
+    /* we need to put this transition in the initial state to enable the transforms during hover and active etc. */
+    transition: all 0.2s;
+    position: relative;
+    font-size: $default-font-size;
+
+    //Change for the <button> element
+    border: none;
+    cursor: pointer;
+  }
+  /* when hovered the btn moves up */
+  &:hover {
+    transform: translateY(-0.3rem);
+    /* x y blur and a little black almost transparent to give a subtle shadow */
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.2);
+
+    &::after {
+      transform: scaleX(1.4) scaleY(1.6);
+      opacity: 0;
+    }
+  }
+
+  /*
+  if you have a value between 0 and 1, don't write the 0 as a coding practice but just .5 instead of 0.5
+  */
+  &:active,
+  &:focus {
+    outline: none;
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.2);
+  }
+
+  &--white {
+    background-color: $color-white;
+    color: $color-grey-dark-2;
+
+    &::after {
+      background-color: $color-white;
+    }
+  }
+
+  &--green {
+    background-color: $color-primary;
+    color: $color-white;
+
+    &::after {
+      background-color: $color-primary;
+    }
+  }
+
+  &::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 10rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all 0.4s;
+  }
+
+  /* put a delay of 0.75 s*/
+  &--animated {
+    animation: moveInBottom 0.5s ease-out 0.75s;
+    animation-fill-mode: backwards;
+  }
+}
+
+.btn-text {
+  &:link,
+  &:visited {
+    font-size: $default-font-size;
+    color: $color-primary;
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid $color-primary;
+    padding: 3px;
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    background-color: $color-primary;
+    color: $color-white;
+    box-shadow: 0 1rem 2rem rgba($color-black, 0.15);
+    transform: translateY(-2px);
+  }
+  &:active {
+    box-shadow: 0 0.5rem 1rem rgba($color-black, 0.15);
+    transform: translateY(0);
+  }
+}

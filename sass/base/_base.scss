@@ -1,0 +1,43 @@
+// this is a partial base file
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  //this defines what 1rem is 
+  //that's why it is in base file instead of typography
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+/*  UNIVERSAL SELECTOR
+   - general reset structuring for universal selector 
+   - border-box is for not having to calculate padding and margin of the box
+   - we put the border-box in the body instead and set it to inherit for all the selectors cause it is not an inherited property normally
+   if you don't want to use border-box for some elements then one can set that element to initial
+   - we put * after and before for elements like 
+*/
+
+/*  HTML
+  - we put root font-size in html selector
+  - best practice is to define the font-size here in px and use rem units for the rest so that we can easily convert the value when we want to
+  - it also allows a more proper responsive design  
+  - we give here 10px to make it easier to replace to save calc efforts -> this way 1 rem is equal to 10px 
+  - but actually it is a bad practice to set this value in px as it would prevent users to set their own browser font-size
+  - if we set it to 100%, it would be 16px as it is the default value, since we want 10 px, we give here 62,5 % 
+  - rems are not used with the very old browsers but modern web dev is not for the old browsers anyway
+*/
+
+/*   BODY:
+   - everything related to font comes best into body as they are inherited
+   - always give a line-height to body 
+   - padding is not inherited, it gives a nice frame to the entire body
+*/
